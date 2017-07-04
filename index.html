@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <title>To-Do</title>
+</head>
+<body>
+<div class="container">
+    <div id="root">
+
+        <tabs>
+
+            <tab name="Home" selected="true">
+                <form class="form-inline" id="input-form">
+                    <div class="form-group">
+                        <input type="text" v-model="newTask" placeholder="Task Name" class="form-control">
+                        <button @click="addTask" class="btn btn-primary">Add Task</button>
+                    </div>
+                </form>
+            </tab>
+
+            <tab name="All Tasks">
+                <h1 v-show="tasks.length>0">All Tasks</h1>
+                <tasks :array="tasks" @check="changeState($event,tasks)" name="all"></tasks>
+            </tab>
+
+            <tab name="Incomplete Tasks">
+                <h1 v-show="incompleteTasks.length>0">Incomplete Tasks</h1>
+                <tasks :array="incompleteTasks" @check="changeState($event,incompleteTasks)" name="incomplete"></tasks>
+            </tab>
+
+            <tab name="Completed Tasks">
+                <h1 v-show="completedTasks.length>0">Complete Tasks</h1>
+                <tasks :array="completedTasks" @check="changeState($event,completedTasks)" name="complete"></tasks>
+            </tab>
+
+        </tabs>
+
+
+    </div>
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="main.js"></script>
+<script src = "https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
