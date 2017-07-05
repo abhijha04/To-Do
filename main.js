@@ -91,10 +91,12 @@ var app=new Vue({
     methods:{
         addTask:function () {
             this.tasks.push(this.taskObject);
+            localStorage.setItem('allTasks',JSON.stringify(this.tasks));
         },
 
         changeState:function (event,array) {
             array[event.target.value].completed=!array[event.target.value].completed;
+            localStorage.setItem('allTasks',JSON.stringify(this.tasks));
         },
 
         show:function () {
@@ -116,11 +118,13 @@ var app=new Vue({
             return this.tasks.filter(function (task) {
                 return !task.completed;
             })
-        },
+        }
+    },
 
-
+    mounted(){
+        if(localStorage.allTasks!=undefined)
+            this.tasks=JSON.parse(localStorage.allTasks);
 
     }
-
 });
 

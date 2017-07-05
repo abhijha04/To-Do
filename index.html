@@ -17,7 +17,7 @@
                 <form class="form-inline" id="input-form">
                     <div class="form-group">
                         <input type="text" v-model="newTask" placeholder="Task Name" class="form-control">
-                        <button @click="addTask" class="btn btn-primary">Add Task</button>
+                        <button @click.prevent="addTask" class="btn btn-primary">Add Task</button>
                     </div>
                 </form>
             </tab>
