@@ -21,17 +21,17 @@
                     </div>
                 </form>
             </tab>
-
+            <!-- for all tasks-->
             <tab name="All Tasks">
                 <h1 v-show="tasks.length>0">All Tasks</h1>
                 <tasks :array="tasks" @check="changeState($event,tasks)" name="all"></tasks>
             </tab>
-
+            <!-- for incomplete tasks-->
             <tab name="Incomplete Tasks">
                 <h1 v-show="incompleteTasks.length>0">Incomplete Tasks</h1>
                 <tasks :array="incompleteTasks" @check="changeState($event,incompleteTasks)" name="incomplete"></tasks>
             </tab>
-
+            <!-- for complete tasks-->
             <tab name="Completed Tasks">
                 <h1 v-show="completedTasks.length>0">Complete Tasks</h1>
                 <tasks :array="completedTasks" @check="changeState($event,completedTasks)" name="complete"></tasks>
